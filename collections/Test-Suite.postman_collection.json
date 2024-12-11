@@ -1531,7 +1531,8 @@
 							"key": "file",
 							"value": "{{filePath}}",
 							"description": "(Required) ",
-							"type": "text"
+							"type": "text",
+							"src" : "./collections/main.pdf"
 						}
 					]
 				},

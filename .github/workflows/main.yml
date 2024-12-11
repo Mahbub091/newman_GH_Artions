@@ -33,7 +33,7 @@ jobs:
       # Step 5: Run Newman with HTML reporter
       - name: Run Newman with HTML Reporter
         run: |
-          node newman_executor.js
+          npm run cli:test
 
       # Step 6: Upload Newman HTML report as an artifact
       - name: Upload HTML Report

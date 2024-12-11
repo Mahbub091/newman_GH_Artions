@@ -1529,9 +1529,9 @@
 						},
 						{
 							"key": "file",
+							"value": "{{filePath}}",
 							"description": "(Required) ",
-							"type": "file",
-							"src": "/C:/Users/Md. Mahbubur. Rahman/Desktop/Git/delineate-tqa-automation/collections/Sample_Research_Paper.pdf"
+							"type": "text"
 						}
 					]
 				},

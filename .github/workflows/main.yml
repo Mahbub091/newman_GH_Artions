@@ -35,7 +35,7 @@ jobs:
         run: |
           newman run collections/Test-Suite.postman_collection.json
             -e collections/Staging_Env.postman_environment.json
-            --env-var filePath="collections/your-file.txt"
+            --env-var filePath="collections/main.pdf"
             --reporters html
             --reporter-html-export reports/newman-report.html
 

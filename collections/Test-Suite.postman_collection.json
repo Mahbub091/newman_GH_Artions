@@ -1736,8 +1736,8 @@
 						},
 						{
 							"key": "file",
-							"type": "file",
-							"src": "/C:/Users/Md. Mahbubur. Rahman/Desktop/Git/delineate-tqa-automation/collections/1.pdf"
+							"value": "{{filePath}}",
+							"type": "text"
 						}
 					]
 				},

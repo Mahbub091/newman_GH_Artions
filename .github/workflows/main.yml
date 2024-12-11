@@ -3,7 +3,7 @@ name: Newman File Upload with HTML Reporter
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   run-newman:

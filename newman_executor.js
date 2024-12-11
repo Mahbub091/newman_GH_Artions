@@ -16,7 +16,7 @@ newman.run(
     globalVar: [
       {
         key: "filePath",
-        value: "./main.pdf", // Path to the file for upload
+        value: "../newman_GH_Artions/main.pdf", // Path to the file for upload
       },
     ],
   },

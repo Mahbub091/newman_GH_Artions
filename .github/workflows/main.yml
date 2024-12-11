@@ -1,43 +1,33 @@
-name: Newman File Upload with HTML Reporter
+name: Newman CLI Tests Execution
 
 on:
   push:
     branches:
       - master
+  # pull_request:
+  #   branches: ["main"]
+  workflow_dispatch:
 
 jobs:
-  run-newman:
+  test_api_collection:
     runs-on: ubuntu-latest
-
     steps:
-      # Step 1: Checkout the repository
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3.3.0
 
-      # Step 2: Set up Node.js
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3.6.0
         with:
-          node-version: '16.x'
+          node-version: "16.x"
 
-      # Step 3: Install Newman and HTML reporter
-      - name: Install Newman and HTML Reporter
-        run: |
-          npm install -g newman
-          npm install -g newman-reporter-html
+      - name: Install dependencies
+        run: npm install
 
-      # Step 4: Verify files (optional, for debugging)
-      - name: List files
-        run: ls -R collections/
+      - name: Run Newman Executor
+        run: node newman_executor.js
 
-      # Step 5: Run Newman with HTML reporter
-      - name: Run Newman with HTML Reporter
-        run: |
-          npm run cli:test
-
-      # Step 6: Upload Newman HTML report as an artifact
-      - name: Upload HTML Report
-        uses: actions/upload-artifact@v3
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v3.1.2
         with:
-          name: newman-html-report
-          path: Reports/newman-report.html
+          name: Test Results
+          path: TestResults

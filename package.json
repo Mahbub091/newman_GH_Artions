@@ -1,0 +1,33 @@
+{
+  "name": "newman_api_execution",
+  "version": "1.0.0",
+  "description": "Newman Test Execution",
+  "main": "index.js",
+  "scripts": {
+    "cli:test": "node newman_executor.js",
+    "report:delete": "del-cli --force .\\Reports\\*.html",
+    "test:newman": "npm run report:delete && npm run cli:test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/delineate-pro/delineate-tqa-automation"
+  },
+  "author": "mahbub",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/delineate-pro/delineate-tqa-automation/issues"
+  },
+  "homepage": "https://github.com/delineate-pro/delineate-tqa-automation",
+  "dependencies": {
+    "async": "^3.2.4",
+    "newman": "^5.3.2",
+    "newman_api_execution": "file:",
+    "newman-reporter-htmlextra": "^1.22.11",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "del-cli": "^5.0.0",
+    "rimraf": "^4.1.2"
+  },
+  "keywords": []
+}

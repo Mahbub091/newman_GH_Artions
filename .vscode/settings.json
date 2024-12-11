@@ -1,0 +1,9 @@
+{
+    "cSpell.words": [
+        "htmlextra"
+    ],
+    "yaml.schemas": {
+        "file:///c%3A/Users/Md.%20Mahbubur.%20Rahman/.vscode/extensions/atlassian.atlascode-3.0.3/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
+        "https://json.schemastore.org/github-action.json": "file:///c%3A/Users/Md.%20Mahbubur.%20Rahman/Desktop/Git/delineate-tqa-automation/.github/workflows/main.yml"
+    }
+}

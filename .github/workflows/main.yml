@@ -33,11 +33,7 @@ jobs:
       # Step 5: Run Newman with HTML reporter
       - name: Run Newman with HTML Reporter
         run: |
-          newman run collections/Test-Suite.postman_collection.json
-            -e collections/Staging_Env.postman_environment.json
-            --env-var filePath="collections/main.pdf"
-            --reporters html
-            --reporter-html-export reports/newman-report.html
+          node newman_executor.js
 
       # Step 6: Upload Newman HTML report as an artifact
       - name: Upload HTML Report

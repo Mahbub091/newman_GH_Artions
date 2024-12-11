@@ -1,9 +1,9 @@
-name: Newman File Upload
+name: Newman File Upload with HTML Reporter
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   run-newman:
@@ -20,17 +20,28 @@ jobs:
         with:
           node-version: '18'
 
-      # Step 3: Install Newman
-      - name: Install Newman
-        run: npm install -g newman
+      # Step 3: Install Newman and HTML reporter
+      - name: Install Newman and HTML Reporter
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-html
 
       # Step 4: Verify files (optional, for debugging)
       - name: List files
         run: ls -R collections/
 
-      # Step 5: Run Newman with file upload
-      - name: Run Newman
+      # Step 5: Run Newman with HTML reporter
+      - name: Run Newman with HTML Reporter
         run: |
-          newman run collections/Test-Suite.postman_collection.json \
-            -e collections/Staging_Env.postman_environment.json \
-            --env-var filePath="collections/main.pdf"
+          newman run collections/your-collection.json \
+            -e collections/your-environment.json \
+            --env-var filePath="collections/your-file.txt" \
+            --reporters html \
+            --reporter-html-export reports/newman-report.html
+
+      # Step 6: Upload Newman HTML report as an artifact
+      - name: Upload HTML Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: newman-html-report
+          path: Reports/newman-report.html

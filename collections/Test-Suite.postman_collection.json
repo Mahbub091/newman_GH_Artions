@@ -3,7 +3,8 @@
 		"_postman_id": "6d9064b8-a71b-4a94-b91c-68ce281dc002",
 		"name": "Test-Suite",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "40015382"
+		"_exporter_id": "40015382",
+		"_collection_link": "https://delineatepro.postman.co/workspace/Delineate.Pro-Workspace~e8dd5ffd-52f5-46b9-879e-c4198d7130f0/collection/40015382-6d9064b8-a71b-4a94-b91c-68ce281dc002?action=share&source=collection_link&creator=40015382"
 	},
 	"item": [
 		{
@@ -1529,10 +1530,9 @@
 						},
 						{
 							"key": "file",
-							"value": "{{filePath}}",
 							"description": "(Required) ",
-							"type": "text",
-							"src" : "./collections/main.pdf"
+							"type": "file",
+							"src": "./collections/main.pdf"
 						}
 					]
 				},
@@ -1737,8 +1737,8 @@
 						},
 						{
 							"key": "file",
-							"value": "{{filePath}}",
-							"type": "text"
+							"type": "file",
+							"src": "./collections/supple.pdf"
 						}
 					]
 				},
@@ -2307,7 +2307,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"tableName\": \"QA_Test_Table\",\r\n  \"projectId\": \"{{newProId}}\",\r\n  \"typeId\": \"{{typeId}}\", \r\n  \"isEditable\": true,\r\n  \"status\": \"active\",\r\n  \"columns\": [\r\n    {\r\n      \"id\": \"string\",\r\n      \"name\": \"ColumnName\",\r\n      \"type\": \"string\",\r\n      \"cHeader\": \"string\",\r\n      \"description\": \"string\",\r\n      \"dType\": \"string\",\r\n      \"order\": 1,\r\n      \"cType\": \"string\"\r\n    }\r\n  ]\r\n}",
+					"raw": "{\r\n    \"tableName\": \"QA_Test_Table\",\r\n    \"projectId\": \"{{newProId}}\",\r\n    \"typeId\": \"{{typeId}}\",\r\n    \"isEditable\": true,\r\n    \"status\": \"active\",\r\n    \"columns\": [\r\n        {\r\n            \"id\": \"bcb3ca36-2d89-42ab-a8c2-4878576a1cba\",\r\n            \"name\": \"GROUP\",\r\n            \"dType\": \"string\",\r\n            \"cHeader\": \"GROUP\",\r\n            \"cType\": \"general\",\r\n            \"description\": \"\",\r\n            \"type\": \"string\"\r\n        },\r\n        {\r\n            \"id\": \"bcb3ca36-2d89-42ab-a8c2-4878576a1cb4\",\r\n            \"name\": \"ROUTE\",\r\n            \"dType\": \"string\",\r\n            \"cHeader\": \"ROUTE\",\r\n            \"cType\": \"general\",\r\n            \"description\": \"\",\r\n            \"type\": \"string\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -4402,7 +4402,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"tableName\": \"MyTable\",\r\n  \"projectId\": \"{{newProId}}\",\r\n  \"typeId\": \"{{typeId}}\",\r\n  \"isEditable\": true,\r\n  \"status\": \"active\",\r\n  \"columns\": [\r\n    {\r\n      \"id\": \"{{columnId}}\",\r\n      \"name\": \"DelineateQA\",\r\n      \"type\": \"string\",\r\n      \"cHeader\": \"string\",\r\n      \"description\": \"string\",\r\n      \"dType\": \"string\",\r\n      \"order\": 1,\r\n      \"cType\": \"string\"\r\n    }\r\n  ]\r\n}",
+					"raw": "{\r\n    \"tableName\": \"MyTable\",\r\n    \"projectId\": \"{{newProId}}\",\r\n    \"typeId\": \"{{typeId}}\",\r\n    \"isEditable\": true,\r\n    \"status\": \"active\",\r\n    \"columns\": [\r\n        {\r\n            \"name\": \"Author\",\r\n            \"type\": \"general\",\r\n            \"cHeader\": \"Author Name\",\r\n            \"description\": \"Author paper name\",\r\n            \"dType\": \"string\",\r\n            \"order\": 1,\r\n            \"cType\": \"general\",\r\n            \"hasUnit\" : false\r\n        },\r\n        {\r\n            \"name\": \"Route\",\r\n            \"type\": \"general\",\r\n            \"cHeader\": \"route Name\",\r\n            \"description\": \"route paper name\",\r\n            \"dType\": \"string\",\r\n            \"order\": 2,\r\n            \"cType\": \"general\",\r\n            \"hasUnit\" : false\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -7759,6 +7759,89 @@
 			"response": []
 		},
 		{
+			"name": "AutoFill_Lable Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/v1/extractions/plot/autofill-labels/:epid",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"v1",
+						"extractions",
+						"plot",
+						"autofill-labels",
+						":epid"
+					],
+					"variable": [
+						{
+							"key": "epid",
+							"value": "{{extractionPlotId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_Spreadsheet_Data Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/v1/extractions/plot/get-spreadsheet-data-by-eid/:extractionId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"v1",
+						"extractions",
+						"plot",
+						"get-spreadsheet-data-by-eid",
+						":extractionId"
+					],
+					"variable": [
+						{
+							"key": "extractionId",
+							"value": "{{extractionId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save. Spreadsheet_Data Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"{{epLineId}}\",\r\n      \"lineName\": \"Line 1\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/v1/extractions/plot/save-spreadsheet-data",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"v1",
+						"extractions",
+						"plot",
+						"save-spreadsheet-data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Add Comment to Compound Copy",
 			"event": [
 				{
@@ -8964,14 +9047,19 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{baseUrl}}/v1/projects/:id",
+					"raw": "{{baseUrl}}/v1/projects/:id/////",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
 						"v1",
 						"projects",
-						":id"
+						":id",
+						"",
+						"",
+						"",
+						"",
+						""
 					],
 					"variable": [
 						{

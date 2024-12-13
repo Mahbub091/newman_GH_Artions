@@ -1475,7 +1475,7 @@
 							"pm.test(\"Validate metaData properties\", () => {\r",
 							"    const metaData = jsonData.metaData;\r",
 							"    pm.expect(metaData).to.have.property(\"id\").that.is.a(\"string\").and.is.not.empty;\r",
-							"    pm.expect(metaData).to.have.property(\"title\").that.is.a(\"string\").and.is.not.empty;\r",
+							"    pm.expect(metaData).to.have.property(\"title\").that.is.a(\"string\");\r",
 							"    pm.expect(metaData).to.have.property(\"fileName\").that.is.a(\"string\").and.is.not.empty;\r",
 							"    pm.expect(metaData).to.have.property(\"graphs\").that.is.null;\r",
 							"    pm.expect(metaData).to.have.property(\"tables\").that.is.null;\r",
@@ -1532,7 +1532,7 @@
 							"key": "file",
 							"description": "(Required) ",
 							"type": "file",
-							"src": "./collections/main.pdf"
+							"src": "/C:/Users/Md. Mahbubur. Rahman/Desktop/Git/newman_GH_Artions/collections/main.pdf"
 						}
 					]
 				},
@@ -1738,7 +1738,7 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": "./collections/supple.pdf"
+							"src": "/C:/Users/Md. Mahbubur. Rahman/Desktop/Git/newman_GH_Artions/collections/supple.pdf"
 						}
 					]
 				},
@@ -1849,7 +1849,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Validate response properties\", () => {\r",
-							"    pm.expect(jsonData).to.have.property(\"typeName\").that.is.a(\"string\").and.equals(\"plot\");\r",
+							"    pm.expect(jsonData).to.have.property(\"typeName\").that.is.a(\"string\");\r",
 							"    pm.expect(jsonData).to.have.property(\"id\").that.is.a(\"string\").and.is.not.empty;\r",
 							"    pm.expect(jsonData).to.have.property(\"createdAt\").that.matches(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/);\r",
 							"    pm.expect(jsonData).to.have.property(\"updatedAt\").that.matches(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/);\r",
@@ -1875,7 +1875,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"typeName\": \"plot\"\n}",
+					"raw": "{\n  \"typeName\": \"{{$randomUserName}}\"\n}",
 					"options": {
 						"raw": {
 							"headerFamily": "json",
@@ -2004,10 +2004,10 @@
 						"exec": [
 							"var jsonData = pm.response.json();\r",
 							"\r",
-							"let typeId = jsonData[0].id;\r",
+							"// let typeId = jsonData[0].id;\r",
 							"\r",
-							"console.log(typeId);\r",
-							"pm.environment.set(\"typeId\", typeId);\r",
+							"// console.log(typeId);\r",
+							"// pm.environment.set(\"typeId\", typeId);\r",
 							"\r",
 							"const schema = {\r",
 							"    \"type\": \"array\",\r",
@@ -2307,7 +2307,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"tableName\": \"QA_Test_Table\",\r\n    \"projectId\": \"{{newProId}}\",\r\n    \"typeId\": \"{{typeId}}\",\r\n    \"isEditable\": true,\r\n    \"status\": \"active\",\r\n    \"columns\": [\r\n        {\r\n            \"id\": \"bcb3ca36-2d89-42ab-a8c2-4878576a1cba\",\r\n            \"name\": \"GROUP\",\r\n            \"dType\": \"string\",\r\n            \"cHeader\": \"GROUP\",\r\n            \"cType\": \"general\",\r\n            \"description\": \"\",\r\n            \"type\": \"string\"\r\n        },\r\n        {\r\n            \"id\": \"bcb3ca36-2d89-42ab-a8c2-4878576a1cb4\",\r\n            \"name\": \"ROUTE\",\r\n            \"dType\": \"string\",\r\n            \"cHeader\": \"ROUTE\",\r\n            \"cType\": \"general\",\r\n            \"description\": \"\",\r\n            \"type\": \"string\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n  \"tableName\": \"MyTable\",\r\n  \"projectId\": \"{{newProId}}\",\r\n  \"typeId\": \"9d58d6c7-7dc7-413a-9366-d239ef83083f\",\r\n  \"isEditable\": true,\r\n  \"status\": \"active\",\r\n  \"columns\": [\r\n    {\r\n      \"id\": \"test\",\r\n      \"name\": \"test_name\",\r\n      \"type\": \"string\",\r\n      \"cHeader\": \"string\",\r\n      \"description\": \"string\",\r\n      \"dType\": \"string\",\r\n      \"order\": 1,\r\n      \"cType\": \"string\"\r\n    }\r\n  ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

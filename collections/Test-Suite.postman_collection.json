@@ -1519,7 +1519,7 @@
 							"key": "file",
 							"description": "(Required) ",
 							"type": "file",
-							"src": "/C:/Users/Md. Mahbubur. Rahman/Desktop/Git/newman_GH_Artions/collections/main.pdf"
+							"src": "./newman_GH_Artions/collections/main.pdf"
 						}
 					]
 				},
@@ -1725,7 +1725,7 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": "/C:/Users/Md. Mahbubur. Rahman/Desktop/Git/newman_GH_Artions/collections/supple.pdf"
+							"src": "./newman_GH_Artions/collections/supple.pdf"
 						}
 					]
 				},

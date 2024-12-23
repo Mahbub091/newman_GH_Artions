@@ -1,5 +1,8 @@
 const newman = require("newman");
 
+// Generate a timestamp with only the date (YYYY-MM-DD)
+const timestamp = new Date().toISOString().split("T")[0];
+
 newman.run(
   {
     collection: require("./collections/Test-Suite.postman_collection.json"), // Path to your collection
@@ -8,7 +11,7 @@ newman.run(
     reporters: "htmlextra",
     reporter: {
       htmlextra: {
-        export: "./Reports/report.html", // Path to save the HTML report
+        export: `./Reports/report-${timestamp}.html`, // Path to save the HTML report with a timestamp
         title: "API Test Report",
         browserTitle: "Test Results",
       },
@@ -24,6 +27,6 @@ newman.run(
     if (err) {
       throw err;
     }
-    console.log("Collection run complete!");
+    console.log("Collection run complete! Report generated at ./Reports/report-" + timestamp + ".html");
   }
 );

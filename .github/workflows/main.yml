@@ -4,30 +4,44 @@ on:
   push:
     branches:
       - master
-  # pull_request:
-  #   branches: ["main"]
   workflow_dispatch:
 
 jobs:
   test_api_collection:
     runs-on: ubuntu-latest
+
     steps:
+      # Checkout the repository
       - name: Checkout Repository
         uses: actions/checkout@v3.3.0
 
+      # Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3.6.0
         with:
           node-version: "16.x"
 
+      # Install dependencies (including Newman)
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install -g newman  # Install Newman globally if it's not in package.json
+          npm install  # Install any other dependencies if needed
 
+      # Run the Newman Executor script
       - name: Run Newman Executor
-        run: node newman_executor.js
+        run: |
+          node newman_executor.js  # Execute the script
 
+      # Upload Test Results (if the report is stored in Reports folder)
       - name: Upload Test Results
         uses: actions/upload-artifact@v3.1.2
         with:
           name: Test Results
           path: Reports
+
+      # Upload CSV Results
+      - name: Upload CSV Results
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: CSV Results
+          path: path/to/csv/output.csv  # Update the path as needed

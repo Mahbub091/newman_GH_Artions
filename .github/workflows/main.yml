@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3.3.0
 
-      # Set up Node.js
+      # Set up Node.js (using Node.js version 16.x)
       - name: Set up Node.js
         uses: actions/setup-node@v3.6.0
         with:
@@ -24,24 +24,29 @@ jobs:
       # Install dependencies (including Newman)
       - name: Install dependencies
         run: |
-          npm install -g newman  # Install Newman globally if it's not in package.json
-          npm install  # Install any other dependencies if needed
+          npm install  # Install dependencies from package.json, including Newman
+          npm install -g newman  # Install Newman globally (in case it's not in package.json)
 
       # Run the Newman Executor script
       - name: Run Newman Executor
         run: |
-          node newman_executor.js  # Execute the script
+          node newman_executor.js  # Run the script that will execute the collection and generate reports
 
-      # Upload Test Results (if the report is stored in Reports folder)
-      - name: Upload Test Results
+      # Check if the Reports folder exists
+      - name: Check if Reports folder exists
+        run: |
+          if [ ! -d "Reports" ]; then echo "Reports folder not found!"; exit 1; fi
+
+      # Upload the HTML Test Report
+      - name: Upload HTML Test Report
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: Test Results
-          path: Reports
+          name: HTML Test Report
+          path: Reports/report-${{ github.run_id }}.html  # Update based on the timestamp in your filename
 
-      # Upload CSV Results
+      # Upload the CSV Results (generated dynamically by newman_executor.js)
       - name: Upload CSV Results
         uses: actions/upload-artifact@v3.1.2
         with:
           name: CSV Results
-          path: path/to/csv/output.csv  # Update the path as needed
+          path: Reports/failed_API-${{ github.run_id }}.csv  # Ensure this matches the generated CSV file's name

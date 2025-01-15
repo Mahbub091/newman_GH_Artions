@@ -48,11 +48,11 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
           name: HTML Test Report
-          path: Reports/Report.html  # Dynamic folder path
+          path: ./Reports/Report.html  # Dynamic folder path
 
       # Upload the CSV Results from the created subdirectory
       - name: Upload CSV Results
         uses: actions/upload-artifact@v3.1.2
         with:
           name: CSV Results
-          path: Reports/failed_api.csv  # Dynamic folder path
+          path: ./Reports/failed_api.csv  # Dynamic folder path

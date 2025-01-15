@@ -4,8 +4,8 @@ const path = require('path');
 
 const timestamp = new Date().toISOString().split("T")[0];
 
-const csvFilePath = `./Reports/failed_API-${timestamp}.csv`;
-const htmlReportPath = `./Reports/report-${timestamp}.html`;
+const csvFilePath = `Reports/failed_API-${timestamp}.csv`;
+const htmlReportPath = `Reports/report-${timestamp}.html`;
 
 const csvHeader = [
   'method', 'url', 'status', 'code', 'responseTime', 'executedIteration', 'totalAssertions'

@@ -10,7 +10,6 @@ const htmlReportPath = path.join(__dirname, `./Reports/report-${timestamp}.html`
 const csvHeader = [
   'method', 'url', 'status', 'code', 'responseTime', 'executedIteration', 'totalAssertions'
 ];
-fs.writeFileSync(csvFilePath, csvHeader.join(',') + '\n');
 
 newman.run(
   {

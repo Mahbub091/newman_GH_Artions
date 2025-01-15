@@ -1425,7 +1425,7 @@
 							"key": "file",
 							"description": "(Required) ",
 							"type": "file",
-							"src": "/C:/Users/Md. Mahbubur. Rahman/Desktop/Git/delineate-tqa-automation/collections/main.pdf"
+							"src": "./collections/main.pdf"
 						}
 					]
 				},
@@ -1631,7 +1631,7 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": "/C:/Users/Md. Mahbubur. Rahman/Desktop/Git/delineate-tqa-automation/collections/supple.pdf"
+							"src": "./collections/supple.pdf"
 						}
 					]
 				},

@@ -27,26 +27,32 @@ jobs:
           npm install  # Install dependencies from package.json, including Newman
           npm install -g newman  # Install Newman globally (in case it's not in package.json)
 
+      # Create a subdirectory under Reports to store reports
+      - name: Create Reports Subdirectory
+        run: |
+          # Use the current date to create a unique directory under Reports
+          mkdir -p "Reports/$(date +'%Y-%m-%d')"  # This will create a directory like Reports/2025-01-16
+
       # Run the Newman Executor script
       - name: Run Newman Executor
         run: |
           node newman_executor.js  # Run the script that will execute the collection and generate reports
 
-      # Check if the Reports folder exists
+      # Check if the Reports folder exists (optional check)
       - name: Check if Reports folder exists
         run: |
           if [ ! -d "Reports" ]; then echo "Reports folder not found!"; exit 1; fi
 
-      # Upload the HTML Test Report
+      # Upload the HTML Test Report from the created subdirectory
       - name: Upload HTML Test Report
         uses: actions/upload-artifact@v3.1.2
         with:
           name: HTML Test Report
-          path: Reports/report-${{ github.run_id }}.html  # Update based on the timestamp in your filename
+          path: Reports/$(date +'%Y-%m-%d')/report-${{ github.run_id }}.html  # Dynamic folder path
 
-      # Upload the CSV Results (generated dynamically by newman_executor.js)
+      # Upload the CSV Results from the created subdirectory
       - name: Upload CSV Results
         uses: actions/upload-artifact@v3.1.2
         with:
           name: CSV Results
-          path: Reports/failed_API-${{ github.run_id }}.csv  # Ensure this matches the generated CSV file's name
+          path: Reports/$(date +'%Y-%m-%d')/failed_API-${{ github.run_id }}.csv  # Dynamic folder path

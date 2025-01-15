@@ -2,10 +2,16 @@ const newman = require("newman");
 const fs = require('fs');
 const path = require('path');
 
+// Ensure the Reports directory exists
+const reportsDir = path.join(__dirname, 'Reports');
+if (!fs.existsSync(reportsDir)) {
+  fs.mkdirSync(reportsDir, { recursive: true });
+}
+
 const timestamp = new Date().toISOString().split("T")[0];
 
-const csvFilePath = path.join(__dirname, `./Reports/failed_API-${timestamp}.csv`);
-const htmlReportPath = path.join(__dirname, `./Reports/report-${timestamp}.html`);
+const csvFilePath = path.join(reportsDir, `failed_API-${timestamp}.csv`);
+const htmlReportPath = path.join(reportsDir, `report-${timestamp}.html`);
 
 const csvHeader = [
   'method', 'url', 'status', 'code', 'responseTime', 'executedIteration', 'totalAssertions'

@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Ensure the Reports directory exists
-const reportsDir = path.join(__dirname, 'Reports');
+const reportsDir = path.join(__dirname, './Reports');
 if (!fs.existsSync(reportsDir)) {
   fs.mkdirSync(reportsDir, { recursive: true });
 }

@@ -139,4 +139,4 @@ dist
 .svelte-kit
 
 newman
-Reports/*.html
+Reports/*

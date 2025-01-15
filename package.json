@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cli:test": "node newman_executor.js",
-    "report:delete": "del-cli --force .\\Reports\\*.html",
+    "report:delete": "del-cli --force .\\Reports\\*",
     "test:newman": "npm run report:delete && npm run cli:test"
   },
   "repository": {

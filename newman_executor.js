@@ -10,7 +10,7 @@ const htmlReportPath = `Reports/report-${timestamp}.html`;
 const csvHeader = [
   'method', 'url', 'status', 'code', 'responseTime', 'executedIteration', 'totalAssertions'
 ];
-fs.writeFileSync(csvFilePath, csvHeader.join(',') + '\n');
+// fs.writeFileSync(csvFilePath, csvHeader.join(',') + '\n');
 
 newman.run(
   {

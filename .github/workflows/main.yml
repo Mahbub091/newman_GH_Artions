@@ -3,7 +3,7 @@ name: Run Newman Tests
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   run-tests:

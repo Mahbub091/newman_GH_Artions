@@ -1,16 +1,16 @@
 const newman = require("newman");
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 const timestamp = new Date().toISOString().split("T")[0];
 
-const csvFilePath = `Reports/failed_API-${timestamp}.csv`;
-const htmlReportPath = `Reports/report-${timestamp}.html`;
+const csvFilePath = path.join(__dirname, `./Reports/failed_API-${timestamp}.csv`);
+const htmlReportPath = path.join(__dirname, `./Reports/report-${timestamp}.html`);
 
 const csvHeader = [
-  'method', 'url', 'status', 'code', 'responseTime', 'executedIteration', 'totalAssertions'
+  "method", "url", "status", "code", "responseTime", "executedIteration", "totalAssertions"
 ];
-// fs.writeFileSync(csvFilePath, csvHeader.join(',') + '\n');
+fs.writeFileSync(csvFilePath, csvHeader.join(",") + "\n");
 
 newman.run(
   {
@@ -30,7 +30,7 @@ newman.run(
   },
   function (err, summary) {
     if (err) {
-      console.error('Newman run encountered an error:', err);
+      console.error("Newman run encountered an error:", err);
       return;
     }
 
@@ -48,9 +48,9 @@ newman.run(
 
         const csvRow = [
           method, url, status, code, responseTime, executedIteration, totalAssertions
-        ].join(',');
+        ].join(",");
 
-        fs.appendFileSync(csvFilePath, csvRow + '\n');
+        fs.appendFileSync(csvFilePath, csvRow + "\n");
       }
     });
 

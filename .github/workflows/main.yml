@@ -1,53 +1,32 @@
-name: Newman CLI Tests Execution
+name: Run Newman Tests
 
 on:
   push:
     branches:
-      - master
-  workflow_dispatch:
+      - main
 
 jobs:
-  test_api_collection:
+  run-tests:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
-      - name: Checkout Repository
-        uses: actions/checkout@v3.3.0
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      # Set up Node.js (using Node.js version 16.x)
-      - name: Set up Node.js
-        uses: actions/setup-node@v3.6.0
-        with:
-          node-version: "16.x"
-
-      # Install dependencies (including Newman)
       - name: Install dependencies
-        run: |
-          npm install  # Install dependencies from package.json, including Newman
-          npm install -g newman  # Install Newman globally (in case it's not in package.json)
+        run: npm install
 
-      # Create a subdirectory under Reports to store reports
-      - name: Create Reports Subdirectory
-        run: |
-          # Use the current date to create a unique directory under Reports
-          mkdir -p "Reports/$(date +'%Y-%m-%d')"  # This will create a directory like Reports/2025-01-16
+      - name: Run Newman tests
+        run: node newman_executor.js
 
-      # Run the Newman Executor script
-      - name: Run Newman Executor
-        run: |
-          node newman_executor.js  # Run the script that will execute the collection and generate reports
-
-      # Upload the HTML Test Report from the created subdirectory
-      - name: Upload HTML Test Report
-        uses: actions/upload-artifact@v3.1.2
+      - name: Upload HTML report artifact
+        uses: actions/upload-artifact@v3
         with:
-          name: HTML Test Report
-          path: Reports/Report.html  # Dynamic folder path
+          name: html-report
+          path: ./Reports/*.html
 
-      # Upload the CSV Results from the created subdirectory
-      - name: Upload CSV Results
-        uses: actions/upload-artifact@v3.1.2
+      - name: Upload CSV report artifact
+        uses: actions/upload-artifact@v3
         with:
-          name: CSV Results
-          path: Reports/failed_api.csv  # Dynamic folder path
+          name: csv-report
+          path: ./Reports/*.csv
